@@ -13,14 +13,14 @@
           (should= true (is-prime 7)))
           (it "can check if not prime"
           (should= false (is-prime 10)))
-          (it "can check if factor"
-              (should= true (is-factor 10 5)))
-          (it "can check if not factor"
-              (should= false (is-factor 10 6)))
-          (it "can find factors"
-              (should= '(2 5) (find-prime-factors 10)))
+          (it "can get next prime"
+              (should= 5 (get-next-prime 3))
+              )
           (it "can find prime factors"
-              (should= '(2 5) (find-prime-factors 50)))
+              (should= '(2 5) (find-prime-factors 10 2 []))
+              )
+
+
           )
 
 (run-specs)
