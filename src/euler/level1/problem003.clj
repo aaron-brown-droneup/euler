@@ -3,6 +3,7 @@
 
 
 
+
 (defn is-prime [n]
   (empty? (filter #(= 0 %) (
                              for [x (range 2 (- n 1))]
@@ -17,35 +18,22 @@
     (is-prime (inc n)) (inc n)
     :else
     (get-next-prime (inc n))
-        )
+    )
 
   )
 
-
-(defn find-prime-factors [n, div, vec]
-
-  (cond (= n 1) vec)
-
-  (if (= 0 (rem n div))
-    (do
-      (conj vec div)
-      (find-prime-factors (/ n div) div vec)
-      )
-    )
-  (if (not (= 0 (rem n div)))
-           (do
-             (find-prime-factors n (get-next-prime div) vec)
-             )
-           )
-
-
+(defn get-prime-factors [n div]
   (cond
-    (>= div n) vec
+    (>= div n) [n]
+    (= 0 (rem n div)) (cons div (get-prime-factors (/ n div) div))
+    :else
+    (get-prime-factors n (get-next-prime div))
     )
   )
-
-
 
 (defn euler-3 [n]
-  (n)
+  (apply max (get-prime-factors n 2))
   )
+
+
+

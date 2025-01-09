@@ -8,7 +8,7 @@
 (describe "Euler Problem #3"
 
           (it "Solves #3"
-              (should= 5 (euler-3 1000)))
+              (should= 6857 (euler-3 600851475143)))
           (it "can check if prime"
           (should= true (is-prime 7)))
           (it "can check if not prime"
@@ -16,10 +16,8 @@
           (it "can get next prime"
               (should= 5 (get-next-prime 3))
               )
-          (it "can find prime factors"
-              (should= '(2 5) (find-prime-factors 10 2 []))
-              )
-
+          (it "can get prime factors"
+              (should= '(2 5 5) (get-prime-factors 50 2)))
 
           )
 
