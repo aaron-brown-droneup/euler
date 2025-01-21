@@ -1,14 +1,13 @@
 (ns euler.level1.problem002)
 
-(defn fibonacci-up-to [max-value]
-  (letfn [(fib-seq [a b]
-            (if (> a max-value)
-              '()
-              (cons a (fib-seq b (+ a b)))))]
-    (fib-seq 0 1)))
+
+(defn fib-seq [a b max-value]
+  (if (> a max-value)
+    '()
+    (cons a (fib-seq b (+ a b) max-value))))
 
 (defn fibonacci-even-up-to [max-value]
-  (filter (fn [val] (not (odd? val))) (fibonacci-up-to max-value))
+  (filter even? (fib-seq 0 1 max-value))
   )
 
 (defn euler-2 [n]
